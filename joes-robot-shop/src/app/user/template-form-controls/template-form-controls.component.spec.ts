@@ -6,14 +6,10 @@ describe('TemplateFormControlsComponent', () => {
   let component: TemplateFormControlsComponent;
   let fixture: ComponentFixture<TemplateFormControlsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TemplateFormControlsComponent ]
-    })
-    .compileComponents();
-  });
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TemplateFormControlsComponent]
+    });
     fixture = TestBed.createComponent(TemplateFormControlsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

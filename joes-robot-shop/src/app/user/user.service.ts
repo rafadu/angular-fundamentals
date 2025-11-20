@@ -1,33 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { IUser, IUserCredentials } from './user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService {
   private user: BehaviorSubject<IUser | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { 
     this.user = new BehaviorSubject<IUser | null>(null);
   }
 
-  getUser(): Observable<IUser | null> {
+  getUser(): Observable<IUser | null>{
     return this.user;
   }
 
-  signIn(credentials: IUserCredentials): Observable<IUser> {
+  signIn(credentials: IUserCredentials): Observable<IUser>{
     return this.http
       .post<IUser>('/api/sign-in', credentials)
-      .pipe(map((user: IUser) => {
+      .pipe(map((user:IUser) => {
         this.user.next(user);
         return user;
       }));
   }
 
-  signOut() {
+  signOut(){
     this.user.next(null);
   }
 }

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { TemplateFormControlsComponent } from './template-form-controls.component';
 
@@ -8,7 +9,8 @@ describe('TemplateFormControlsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TemplateFormControlsComponent]
+      declarations: [TemplateFormControlsComponent],
+      imports: [FormsModule]
     });
     fixture = TestBed.createComponent(TemplateFormControlsComponent);
     component = fixture.componentInstance;

@@ -12,6 +12,12 @@ describe('ProductDetailsComponent', () => {
     });
     fixture = TestBed.createComponent(ProductDetailsComponent);
     component = fixture.componentInstance;
+
+    component.productDetail = {
+      name: 'Test Robot',
+      imageName: 'test.png',
+      discount: 0
+    } as any;
     fixture.detectChanges();
   });
 

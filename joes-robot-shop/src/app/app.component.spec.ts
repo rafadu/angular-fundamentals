@@ -1,9 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SiteHeaderComponent } from './site-header/site-header.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
+    declarations: [AppComponent, SiteHeaderComponent],
+    imports: [RouterTestingModule, HttpClientTestingModule]
   }));
 
   it('should create the app', () => {
@@ -22,6 +26,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('joes-robot-shop app is running!');
+    expect(compiled.children.length).toBe(2);
+    expect(compiled.children[0].nodeName).toBe('BOT-SITE-HEADER');
+    expect(compiled.children[1].nodeName).toBe('ROUTER-OUTLET');
   });
 });
